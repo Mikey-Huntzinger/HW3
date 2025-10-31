@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%-include('partials/header.ejs') %>
+
+    <body>
+        <%- include("partials/navbar.ejs") %>
+
+            <div class="header">
+                <h1>Welcome to the Spoon Recipe Finder!</h1>
+                <p>Use this application to find delicious recipes.</p>
+                <p>You can search through recipes using:</p>
+                <ul>Recipe Name</ul>
+                <ul>Ingredients</ul>
+                <ul>Calories</ul>
+                <p>Enjoy your cooking!</p>
+            </div>
+
+            <div class="container">
+                <h1>Spoonacular Recipe Search</h1>
+                <form action="/searchByName" method="GET">
+                    <div class="search-container">
+                        <label for="searchInput">Recipe Name:</label>
+                        <input type="text" id="searchInput" name="search" placeholder="Search for delicious recipes...">
+                        <button id="searchButton" type="submit">Search</button>
+                    </div>
+                </form>
+                <br>
+                <form action="/searchByIngredients" method="GET">
+                    <div class="search-container">
+                        <label for="ingredients">Enter ingredients (comma-separated):</label>
+                        <input type="text" id="ingredients" name="ingredients" placeholder="e.g., flour, sugar, eggs">
+                        <button id="searchButton" type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+
+
+            <!-- <script>
+                document.getElementById("ingredients").addEventListener("submit", function () {
+                    const input = this.value;
+
+                    // 1. Split the string by commas.
+                    // 2. Use map() to iterate over each item.
+                    // 3. Use trim() to remove leading/trailing whitespace.
+                    // 4. Use filter() to remove any empty strings that might result from extra commas (e.g., "flour, , sugar").
+                    const ingredientsArray = input
+                        .split(',')
+                        .map(item => item.trim())
+                        .filter(item => item !== '');
+
+                    console.log(ingredientsArray); // Output: ['flour', 'sugar', 'eggs']
+
+                });
+            </script> -->
+            <%- include('partials/footer.ejs') %>
+    </body>
+
+</html>

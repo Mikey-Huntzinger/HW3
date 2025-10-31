@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<%-include('partials/header.ejs') %>
+
+    <body>
+        <%- include("partials/navbar.ejs") %>
+
+            <div class="container">
+                <h1>Search Results</h1>
+                
+                <div class="row">
+                    <% if (data && data.length > 0) { %>
+                        <% data.forEach(function(recipe) { %>
+                            <div class="col-md-3 mb-4">
+                                <div class="card h-100">
+                                    <img src="<%= recipe.image %>" class="card-img-top" alt="<%= recipe.title %>">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%= recipe.title %></h5>
+                                        <a href="/recipe/<%= recipe.id %>" class="btn btn-primary">View Recipe</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }); %>
+                    <% } else { %>
+                        <div class="col-12">
+                            <p>No recipes found.</p>
+                        </div>
+                    <% } %>
+                </div>
+
+
+            <%- include('partials/footer.ejs') %>
+
+    </body>
+
+</html>

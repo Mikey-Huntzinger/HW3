@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<%-include('partials/header.ejs') %>
+
+    <body>
+        <%- include("partials/navbar.ejs") %>
+
+            <h1>Get a random recipe!</h1>
+
+            <div class="d-grid gap-2">
+                <button
+                    type="button"
+                    name=""
+                    id=""
+                    class="btn btn-primary"
+                >
+                    Click me!
+                </button>
+            </div>
+            
+
+
+
+            <%- include('partials/footer.ejs') %>
+
+        <script>
+            document.querySelector("button").addEventListener("click", async () => {
+                const response = await fetch(`/api/random-recipe`);
+                const data = await response.json();
+                if (data.recipes && data.recipes.length > 0) {
+                    const recipeId = data.recipes[0].id;
+                    window.location.href = `/recipe/${recipeId}`;
+                } else {
+                    alert("Could not find a random recipe. Please try again!");
+                }
+            });
+        </script>
+    </body>
+    
+
+</html>
