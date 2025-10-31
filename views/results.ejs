@@ -5,31 +5,36 @@
     <body>
         <%- include("partials/navbar.ejs") %>
 
-            <div class="container">
-                <h1>Search Results</h1>
-                
+            <div class="container py-5">
+                <h1 class="text-center mb-5">Search Results</h1>
+
                 <div class="row">
-                    <% if (data && data.length > 0) { %>
+                    <% if (data && data.length> 0) { %>
                         <% data.forEach(function(recipe) { %>
-                            <div class="col-md-3 mb-4">
-                                <div class="card h-100">
+                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                                <div class="card h-100 shadow-sm">
                                     <img src="<%= recipe.image %>" class="card-img-top" alt="<%= recipe.title %>">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><%= recipe.title %></h5>
-                                        <a href="/recipe/<%= recipe.id %>" class="btn btn-primary">View Recipe</a>
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title">
+                                            <%= recipe.title %>
+                                        </h5>
+                                        <a href="/recipe/<%= recipe.id %>" class="btn btn-primary mt-auto">View
+                                            Recipe</a>
                                     </div>
                                 </div>
                             </div>
-                        <% }); %>
-                    <% } else { %>
-                        <div class="col-12">
-                            <p>No recipes found.</p>
-                        </div>
-                    <% } %>
+                            <% }); %>
+                                <% } else { %>
+                                    <div class="col-12">
+                                        <div class="alert alert-warning text-center" role="alert">
+                                            No recipes found. Please try a different search.
+                                        </div>
+                                    </div>
+                                    <% } %>
                 </div>
 
 
-            <%- include('partials/footer.ejs') %>
+                <%- include('partials/footer.ejs') %>
 
     </body>
 
